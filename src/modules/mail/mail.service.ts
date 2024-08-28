@@ -3,6 +3,7 @@ import { SendMailDto } from './dto/send-mail.dto';
 import { MailerService } from '@nestjs-modules/mailer';
 import Mailgen from 'mailgen';
 import { ConfigService } from '@nestjs/config';
+import { config } from 'process';
 
 @Injectable()
 export class MailService {
@@ -31,7 +32,7 @@ export class MailService {
       sendMailDto.emails.map((email) =>
         promises.push(
           this.mailerService.sendMail({
-            from: process.env.MAIL_SENDER,
+            from: this.configService.get('mail.sender'),
             to: email,
             subject: sendMailDto.subject,
             text: sendMailDto.message,
@@ -52,7 +53,7 @@ export class MailService {
       sendMailDto.emails.map((email) =>
         promises.push(
           this.mailerService.sendMail({
-            from: process.env.MAIL_SENDER,
+            from: this.configService.get('mail.sender'),
             to: email,
             subject: sendMailDto.subject,
             html,

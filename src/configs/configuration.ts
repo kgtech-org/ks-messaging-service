@@ -28,6 +28,7 @@ export default () => ({
   },
   mail: {
     enabled: !!parseInt(process.env.MAIL_ENABLED),
+    sender: process.env.MAIL_SENDER,
     transport: {
       host: process.env.MAIL_HOST,
       port: parseInt(process.env.MAIL_PORT, 10) || 587,
