@@ -1,0 +1,12 @@
+GET http://localhost:3002/api/v1
+###
+
+POST http://localhost:3002/api/v1/mail/otp
+Content-Type: application/json
+
+{
+  "to" : "aroamadou1@gmail.com",
+  "otp" : "123321"
+}
+
+####
